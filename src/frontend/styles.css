@@ -12,12 +12,104 @@ html, body {
 
 /* === BASE LAYER: DARK GRAY TEXTURED WALL === */
 body {
-    background-color: #1a1c1e;
-    background-image: url("https://www.transparenttextures.com/patterns/concrete-wall-3.png");
+    background-color: #0a0a0a;
+    background-image: url("assets/dark_background.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     font-family: "Courier New", Courier, monospace;
     color: #a5d458;
     min-height: 100vh;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* === VINE DECORATIONS - BEHIND GRID === */
+.vine-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: normal;
+}
+
+.vine-top img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.vine-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.vine-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+}
+
+.vine-right {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.vine-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right;
+}
+
+/* === VINE DECORATIONS - IN FRONT OF GRID === */
+.vine-front-left {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 300px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.vine-front-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom left;
+}
+
+.vine-front-right {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+    height: 300px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.vine-front-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom right;
 }
 
 /* === MAIN CONTAINER: 90vw CENTERED === */
@@ -25,6 +117,8 @@ body {
     width: 90vw;
     margin: 5vh auto;
     min-height: 90vh;
+    position: relative;
+    z-index: 10;
 }
 
 /* === THE TIC-TAC-TOE 3x3 GRID === */
@@ -37,13 +131,15 @@ body {
     min-height: 600px;
 }
 
-/* === GRID CELLS: TRANSPARENT BACKGROUND ONLY === */
+/* === GRID CELLS: SEMI-TRANSPARENT DARK BACKGROUND === */
 .cell {
-    background: transparent;
+    background: rgba(20, 20, 20, 0.7);
     padding: 2rem;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    position: relative;
+    z-index: 10;
 }
 
 /* Tic-tac-toe border logic: borders only on inner lines */
@@ -205,6 +301,17 @@ body {
     .main-container {
         width: 95vw;
         margin: 2vh auto;
+    }
+
+    .vine-left,
+    .vine-right {
+        width: 60px;
+    }
+
+    .vine-front-left,
+    .vine-front-right {
+        width: 100px;
+        height: 150px;
     }
 
     .brutalist-grid {

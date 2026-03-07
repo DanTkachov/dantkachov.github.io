@@ -3,150 +3,411 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAN TKACHOV - MLE/SWE</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>DAN TKACHOV // MLE & SWE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --panel-bg: rgba(26, 26, 26, 0.72);
+            --panel-border: #2d2d2d;
+            --text-primary: #f8f9fa;
+            --text-secondary: #a0a0a0;
+            --accent-green: #4ade80;
+            --rivet-color: #3d3d3d;
+        }
+
+        body {
+            font-family: 'Courier New', 'Menlo', 'Monaco', monospace;
+            background-color: #111111;
+            background-image: url('assets/dark_background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        /* Industrial Panel Base */
+        .panel {
+            background: var(--panel-bg);
+            border: 4px solid var(--panel-border);
+            position: relative;
+            padding: 1.5rem;
+            box-shadow: 
+                inset 0 0 20px rgba(0,0,0,0.5),
+                0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        /* Riveted corners - Top */
+        .panel::before,
+        .panel::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--rivet-color);
+            border-radius: 50%;
+            box-shadow: 
+                inset 1px 1px 2px rgba(255,255,255,0.1),
+                inset -1px -1px 2px rgba(0,0,0,0.5);
+        }
+
+        .panel::before {
+            top: 6px;
+            left: 6px;
+        }
+
+        .panel::after {
+            top: 6px;
+            right: 6px;
+        }
+
+        /* Riveted corners - Bottom */
+        .panel-content::before,
+        .panel-content::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--rivet-color);
+            border-radius: 50%;
+            box-shadow: 
+                inset 1px 1px 2px rgba(255,255,255,0.1),
+                inset -1px -1px 2px rgba(0,0,0,0.5);
+            bottom: 6px;
+        }
+
+        .panel-content::before {
+            left: 6px;
+        }
+
+        .panel-content::after {
+            right: 6px;
+        }
+
+        /* Panel Header Styling */
+        .panel-label {
+            color: var(--accent-green);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .panel-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .panel-subtitle {
+            color: var(--accent-green);
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Typography */
+        .text-accent {
+            color: var(--accent-green);
+        }
+
+        .text-secondary {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Tech Tags */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Status Indicator */
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-green);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* STRICT 3x3 GRID */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .grid-3x3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* Contact Info Items */
+        .contact-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-label {
+            color: var(--text-secondary);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-value {
+            color: var(--text-primary);
+            font-size: 0.85rem;
+        }
+
+        /* Experience Styling */
+        .exp-company {
+            color: var(--accent-green);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .exp-date {
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .panel-description {
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* Name panel specific */
+        .name-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 200px;
+        }
+
+        .name-panel .panel-title {
+            font-size: 2.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1100px) {
+            .grid-3x3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-3x3 {
+                grid-template-columns: 1fr;
+            }
+            
+            body {
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="main-container">
-        <div class="brutalist-grid">
+        <div class="grid-3x3">
             
             <!-- ROW 1 -->
-            <!-- Cell 1: CONTACT INFO -->
-            <div class="cell cell-1">
-                <div class="cell-label">CONTACT INFO</div>
-                <div class="cell-content">
+            
+            <!-- Cell 1,1: Contact Info -->
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="panel-label">CONTACT INFO</div>
+                    
                     <div class="contact-item">
-                        <span class="contact-label">[LOCATION]</span><br>
-                        Lexington/Cambridge Area
+                        <span class="contact-label">DESCRIPTOR</span>
+                        <span class="contact-value">Lexington/Cambridge Area</span>
                     </div>
+                    
                     <div class="contact-item">
-                        <span class="contact-label">[GITHUB]</span><br>
-                        github.com/dantkachov
+                        <span class="contact-label">METHOD</span>
+                        <span class="contact-value text-accent">github.com/dantkachov</span>
                     </div>
+                    
                     <div class="contact-item">
-                        <span class="contact-label">[LINKEDIN]</span><br>
-                        linkedin.com/in/dantkachov
+                        <span class="contact-label">/:DONDCAME</span>
+                        <span class="contact-value text-accent">linkedin.com/in/danckachov</span>
                     </div>
+                    
                     <div class="contact-item">
-                        <span class="contact-label">[EMAIL]</span><br>
-                        dan.tkachov@email.com
+                        <span class="contact-label">EXAMPLE</span>
+                        <span class="contact-value">dan.tkachov@exail.com</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Cell 2: NAME -->
-            <div class="cell cell-2">
-                <div class="cell-title" style="font-size: 3.5rem">DAN TKACHOV</div>
-                <div class="cell-subtitle">// MLE & SWE</div>
+            <!-- Cell 1,2: Name -->
+            <div class="panel name-panel">
+                <div class="panel-content">
+                    <div class="panel-title">DAN TKACHOV</div>
+                    <div class="panel-subtitle">// MLE & SWE //</div>
+                </div>
             </div>
 
-            <!-- Cell 3: TECH STACKS -->
-            <div class="cell cell-3">
-                <div class="cell-label">TECH STACKS</div>
-                <div class="tech-grid">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">C</span>
-                    <span class="tech-tag">Rust</span>
-                    <span class="tech-tag">PyTorch</span>
-                    <span class="tech-tag">FastAPI</span>
-                    <span class="tech-tag">Docker</span>
-                    <span class="tech-tag">Kubernetes</span>
-                    <span class="tech-tag">Celery</span>
-                    <span class="tech-tag">AWS</span>
-                    <span class="tech-tag">Unity3D</span>
+            <!-- Cell 1,3: Tech Stacks -->
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="panel-label">TECH STACKS</div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">C</span>
+                        <span class="tech-tag">Rust</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Celery</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Unity3D</span>
+                    </div>
                 </div>
             </div>
 
             <!-- ROW 2 -->
-            <!-- Cell 4: WORK EXP 1 -->
-            <div class="cell cell-4">
-                <div class="cell-label">WORK EXPERIENCE 01</div>
-                <div class="cell-title">AI/ML Engineering Intern</div>
-                <div class="exp-company">@ Vincer</div>
-                <div class="exp-date">2024 - Present</div>
-                <div class="cell-content">
-                    Developing machine learning pipelines for healthcare data analysis. 
-                    Implementing NLP models for medical text processing and 
-                    <span class="highlight">clinical decision support systems</span>.
+
+            <!-- Cell 2,1: AI/ML Intern @ Vincer -->
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="panel-label">NAME ENGINEERED OS</div>
+                    <div class="panel-title">AI/ML ENGINEERING INTERN</div>
+                    <div class="exp-company">@ Vincer</div>
+                    <div class="exp-date">DATE - 8 PIGRS - 2020-2021</div>
+                    <div class="panel-description">
+                        Developing machine learning pipelines for healthcare data analysis, explomenting NLP models for medical text processing and clinical decision support systems.
+                    </div>
                 </div>
             </div>
 
-            <!-- Cell 5: WORK EXP 2 -->
-            <div class="cell cell-5">
-                <div class="cell-label">WORK EXPERIENCE 02</div>
-                <div class="cell-title">Junior Software Engineer Intern</div>
-                <div class="exp-company">@ Via Scientific</div>
-                <div class="exp-date">2023 - 2024</div>
-                <div class="cell-content">
-                    Built data processing infrastructure for scientific research platforms. 
-                    Worked with <span class="highlight">FastAPI, Celery, and PostgreSQL</span> 
-                    to handle large-scale bioinformatics datasets.
+            <!-- Cell 2,2: Junior SWE @ Via Scientific -->
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="panel-label">NAME CONFIERED 05</div>
+                    <div class="panel-title">JUNIOR SOFTWARE ENGINEER INTERN</div>
+                    <div class="exp-company">@ Via Scientific</div>
+                    <div class="exp-date">DATE - TERE - 2020-2021</div>
+                    <div class="panel-description">
+                        Built data processing infrastructure for scientific research platforms. Worked with FastAPI, Celery, and PostgreSQL To handle large scales bioinformatics datesets.
+                    </div>
                 </div>
             </div>
 
-            <!-- Cell 6: PROJECT 1 -->
-            <div class="cell cell-6">
-                <div class="cell-label">PROJECT 01</div>
-                <div class="cell-title">TIKTOK DATA LAKE</div>
-                <div class="project-desc">
-                    High-throughput data ingestion system processing 50K events/second. 
-                    Built with FastAPI and Celery for distributed task queues.
-                </div>
-                <div class="project-tech">
-                    <span class="tech-tag">FastAPI</span>
-                    <span class="tech-tag">Celery</span>
-                    <span class="tech-tag">Redis</span>
-                    <span class="tech-tag">PostgreSQL</span>
+            <!-- Cell 2,3: TikTok Data Lake -->
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="panel-label">PROJECT_01:</div>
+                    <div class="panel-title">TIKTOK_DATA_LAKE</div>
+                    <div class="panel-description" style="min-height: 60px;">
+                        <!-- Placeholder for schematic/diagram -->
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">ScyllaDB</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
                 </div>
             </div>
 
             <!-- ROW 3 -->
-            <!-- Cell 7: PROJECT 2 -->
-            <div class="cell cell-7">
-                <div class="cell-label">PROJECT 02</div>
-                <div class="cell-title">MOCK INTERVIEWER AI</div>
-                <div class="project-desc">
-                    Multimodal AI interviewer analyzing facial expressions, tone, and 
-                    speech patterns to provide real-time interview feedback and scoring.
-                </div>
-                <div class="project-tech">
-                    <span class="tech-tag">OpenAI</span>
-                    <span class="tech-tag">WebRTC</span>
-                    <span class="tech-tag">FastAPI</span>
-                    <span class="tech-tag">React</span>
+
+            <!-- Cell 3,1: Mock Interviewer AI -->
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="panel-label">PROJECT_03</div>
+                    <div class="panel-title">MOCK INTERVIEWER AI</div>
+                    <div class="panel-description">
+                        Multimodal AI interviewer analyzing facial expressions, time, and speech patterns to provide real-time interview feedback and duncing.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">OpenAI</span>
+                        <span class="tech-tag">WebRTC</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">React</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Cell 8: PROJECT 3 -->
-            <div class="cell cell-8">
-                <div class="cell-label">PROJECT 03</div>
-                <div class="cell-title">PYTORCH PPO AGENT</div>
-                <div class="project-desc">
-                    Reinforcement learning agent trained with Proximal Policy Optimization 
-                    to play No-Limit Texas Hold'em at superhuman levels. 
-                    <span class="highlight">+12.5 BB/100 win rate</span>.
-                </div>
-                <div class="project-tech">
-                    <span class="tech-tag">PyTorch</span>
-                    <span class="tech-tag">Ray</span>
-                    <span class="tech-tag">PPO</span>
-                    <span class="tech-tag">CUDA</span>
+            <!-- Cell 3,2: PyTorch PPO Agent -->
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="panel-label">PROJECT_04</div>
+                    <div class="panel-title">PYTORCH PPO AGENT</div>
+                    <div class="panel-description">
+                        Reinforcement learning agent trained with Provimit Folcey Optimization to Play No-Limit Texas Hold'em at superhuman levels: +12.5 BB/tmg win rate.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Ray</span>
+                        <span class="tech-tag">PPO</span>
+                        <span class="tech-tag">CUDA</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Cell 9: PROJECT 4 -->
-            <div class="cell cell-9">
-                <div class="cell-label">PROJECT 04</div>
-                <div class="cell-title">CROWD DISASTER SIM</div>
-                <div class="project-desc">
-                    Real-time crowd dynamics simulation for disaster scenario training. 
-                    Uses Unity3D with PyTorch-powered agent behavior models.
-                </div>
-                <div class="project-tech">
-                    <span class="tech-tag">Unity3D</span>
-                    <span class="tech-tag">PyTorch</span>
-                    <span class="tech-tag">C#</span>
-                    <span class="tech-tag">ML-Agents</span>
+            <!-- Cell 3,3: Crowd Disaster Sim -->
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="panel-label">PROJECT_01</div>
+                    <div class="panel-title">CROWD DISASTER SIM</div>
+                    <div class="panel-description">
+                        Real-time crowd dynamics simulation for disaster scenario training. Uses Unity3D with PyTorch-powered agant behavior models.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Unity3D</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">ML-Agents</span>
+                    </div>
                 </div>
             </div>
 
