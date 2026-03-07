@@ -1,0 +1,230 @@
+/* === RESET === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+/* === BASE LAYER: DARK GRAY TEXTURED WALL === */
+body {
+    background-color: #1a1c1e;
+    background-image: url("https://www.transparenttextures.com/patterns/concrete-wall-3.png");
+    font-family: "Courier New", Courier, monospace;
+    color: #a5d458;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* === MAIN CONTAINER: 90vw CENTERED === */
+.main-container {
+    width: 90vw;
+    margin: 5vh auto;
+    min-height: 90vh;
+}
+
+/* === THE TIC-TAC-TOE 3x3 GRID === */
+.brutalist-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
+    height: 90vh;
+    min-height: 600px;
+}
+
+/* === GRID CELLS: TRANSPARENT BACKGROUND ONLY === */
+.cell {
+    background: transparent;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Tic-tac-toe border logic: borders only on inner lines */
+.cell-1 {
+    border-right: 4px solid #140f0d;
+    border-bottom: 4px solid #140f0d;
+}
+
+.cell-2 {
+    border-right: 4px solid #140f0d;
+    border-bottom: 4px solid #140f0d;
+}
+
+.cell-3 {
+    border-bottom: 4px solid #140f0d;
+}
+
+.cell-4 {
+    border-right: 4px solid #140f0d;
+    border-bottom: 4px solid #140f0d;
+}
+
+.cell-5 {
+    border-right: 4px solid #140f0d;
+    border-bottom: 4px solid #140f0d;
+}
+
+.cell-6 {
+    border-bottom: 4px solid #140f0d;
+}
+
+.cell-7 {
+    border-right: 4px solid #140f0d;
+}
+
+.cell-8 {
+    border-right: 4px solid #140f0d;
+}
+
+.cell-9 {
+    /* No borders - outer corner */
+}
+
+/* === TYPOGRAPHY === */
+.cell-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #549608;
+    margin-bottom: 1rem;
+}
+
+.cell-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #85bd14;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.cell-subtitle {
+    font-size: 0.9rem;
+    color: #10831b;
+    margin-bottom: 1rem;
+}
+
+.cell-content {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: #a5d458;
+}
+
+.tech-tag {
+    display: inline-block;
+    border: 1px solid #549608;
+    color: #a5d458;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    margin: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.highlight {
+    color: #85bd14;
+    font-weight: 700;
+}
+
+/* === SPECIFIC CELL STYLING === */
+
+/* Cell 2 (Name) - centered and prominent */
+.cell-2 {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cell-2 .cell-title {
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.25rem;
+}
+
+.cell-2 .cell-subtitle {
+    font-size: 1rem;
+    color: #10831b;
+    letter-spacing: 0.2em;
+}
+
+/* Tech stacks grid */
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0.5rem;
+}
+
+/* Experience items */
+.exp-company {
+    font-size: 0.9rem;
+    color: #85bd14;
+    margin-bottom: 0.5rem;
+}
+
+.exp-date {
+    font-size: 0.75rem;
+    color: #549608;
+    margin-bottom: 0.75rem;
+}
+
+/* Project descriptions */
+.project-desc {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #a5d458;
+    margin-bottom: 1rem;
+}
+
+.project-tech {
+    margin-top: auto;
+}
+
+/* Contact links */
+.contact-item {
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+}
+
+.contact-label {
+    color: #549608;
+    font-weight: 700;
+}
+
+/* === MOBILE RESPONSIVENESS === */
+@media (max-width: 1000px) {
+    .main-container {
+        width: 95vw;
+        margin: 2vh auto;
+    }
+
+    .brutalist-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+    }
+
+    .cell {
+        border: none;
+        border-bottom: 4px solid #140f0d;
+        padding: 1.5rem;
+        min-height: 200px;
+    }
+
+    .cell-9 {
+        border-bottom: none;
+    }
+
+    .cell-2 .cell-title {
+        font-size: 1.4rem;
+    }
+}
