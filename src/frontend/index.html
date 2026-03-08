@@ -145,6 +145,46 @@
             letter-spacing: 1px;
         }
 
+        /* Download Button */
+        .download-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(74, 222, 128, 0.15);
+            border: 2px solid var(--accent-green);
+            color: var(--accent-green);
+            font-family: 'Courier New', 'Menlo', 'Monaco', monospace;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                inset 0 0 10px rgba(74, 222, 128, 0.2),
+                0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .download-btn:hover {
+            background: rgba(74, 222, 128, 0.25);
+            box-shadow: 
+                inset 0 0 20px rgba(74, 222, 128, 0.3),
+                0 0 15px rgba(74, 222, 128, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Links */
+        a {
+            color: var(--accent-green);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            text-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+        }
+
         /* Status Indicator */
         .status-indicator {
             display: inline-flex;
@@ -250,6 +290,25 @@
             body {
                 padding: 1rem;
             }
+
+            .contact-vine {
+                display: none;
+            }
+        }
+
+        /* VINE INSIDE CONTACT BOX */
+        .contact-vine {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 180px;
+            width: auto;
+            max-width: 45%;
+            object-fit: contain;
+            object-position: top right;
+            pointer-events: none;
+            z-index: 10;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.7)) brightness(0.5) contrast(1.2);
         }
     </style>
 </head>
@@ -260,28 +319,31 @@
             <!-- ROW 1 -->
             
             <!-- Cell 1,1: Contact Info -->
-            <div class="panel">
+            <div class="panel" style="position: relative;">
+                <img src="assets/hanging%20vine.png" alt="" class="contact-vine">
                 <div class="panel-content">
                     <div class="panel-label">CONTACT INFO</div>
                     
                     <div class="contact-item">
-                        <span class="contact-label">DESCRIPTOR</span>
-                        <span class="contact-value">Lexington/Cambridge Area</span>
+                        <span class="contact-label">LOCATION</span>
+                        <span class="contact-value">Lexington, MA</span>
+                        <br>
+                        <span class="contact-value">Relocation Available (USA Only)</span>
                     </div>
                     
                     <div class="contact-item">
-                        <span class="contact-label">METHOD</span>
-                        <span class="contact-value text-accent">github.com/dantkachov</span>
+                        <span class="contact-label">EMAIL</span>
+                        <span class="contact-value text-accent">tkachov.d [at] northeastern.edu</span>
                     </div>
                     
                     <div class="contact-item">
-                        <span class="contact-label">/:DONDCAME</span>
-                        <span class="contact-value text-accent">linkedin.com/in/danckachov</span>
+                        <span class="contact-label">GITHUB</span>
+                        <span class="contact-value"><a href="https://github.com/DanTkachov" target="_blank">github.com/DanTkachov</a></span>
                     </div>
                     
                     <div class="contact-item">
-                        <span class="contact-label">EXAMPLE</span>
-                        <span class="contact-value">dan.tkachov@exail.com</span>
+                        <span class="contact-label">LINKEDIN</span>
+                        <span class="contact-value"><a href="https://linkedin.com/in/dantkachov" target="_blank">linkedin.com/in/dantkachov</a></span>
                     </div>
                 </div>
             </div>
@@ -291,24 +353,21 @@
                 <div class="panel-content">
                     <div class="panel-title">DAN TKACHOV</div>
                     <div class="panel-subtitle">// MLE & SWE //</div>
+                    <a href="assets/Daniel Tkachov Resume.pdf" download class="download-btn">[ DOWNLOAD RESUME ]</a>
                 </div>
             </div>
 
-            <!-- Cell 1,3: Tech Stacks -->
+            <!-- Cell 1,3: Education Info -->
             <div class="panel">
                 <div class="panel-content">
-                    <div class="panel-label">TECH STACKS</div>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">C</span>
-                        <span class="tech-tag">Rust</span>
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">Docker</span>
-                        <span class="tech-tag">Kubernetes</span>
-                        <span class="tech-tag">Celery</span>
-                        <span class="tech-tag">AWS</span>
-                        <span class="tech-tag">Unity3D</span>
+                    <div class="panel-label">EDUCATION</div>
+                    <div class="panel-title" style="font-size: 1.1rem;">NORTHEASTERN UNIVERSITY</div>
+                    <div class="exp-company">MS Artificial Intelligence | GPA: 3.9/4.0</div>
+                    <div class="exp-date">Sep 2024 - May 2026 | Boston, MA</div>
+                    <div style="margin-top: 1rem;">
+                        <div class="panel-title" style="font-size: 1.1rem;">BOSTON UNIVERSITY</div>
+                        <div class="exp-company">BS Computer Science | GPA: 3.5/4.0</div>
+                        <div class="exp-date">Sep 2019 - May 2023 | Boston, MA</div>
                     </div>
                 </div>
             </div>
@@ -318,12 +377,12 @@
             <!-- Cell 2,1: AI/ML Intern @ Vincer -->
             <div class="panel">
                 <div class="panel-content">
-                    <div class="panel-label">NAME ENGINEERED OS</div>
+                    <div class="panel-label">EXPERIENCE_01</div>
                     <div class="panel-title">AI/ML ENGINEERING INTERN</div>
                     <div class="exp-company">@ Vincer</div>
-                    <div class="exp-date">DATE - 8 PIGRS - 2020-2021</div>
+                    <div class="exp-date">May 2025 - Aug 2025 | Cambridge, MA</div>
                     <div class="panel-description">
-                        Developing machine learning pipelines for healthcare data analysis, explomenting NLP models for medical text processing and clinical decision support systems.
+                        Architected Python/React data pipeline automating TikTok video ingestion, chunking, and LLM transcription. Developed AI evaluation framework to benchmark SOTA LLMs and batch-process conversations. Built classification system to profile users and analyze model disagreements across 2K+ records.
                     </div>
                 </div>
             </div>
@@ -331,82 +390,94 @@
             <!-- Cell 2,2: Junior SWE @ Via Scientific -->
             <div class="panel">
                 <div class="panel-content">
-                    <div class="panel-label">NAME CONFIERED 05</div>
+                    <div class="panel-label">EXPERIENCE_02</div>
                     <div class="panel-title">JUNIOR SOFTWARE ENGINEER INTERN</div>
                     <div class="exp-company">@ Via Scientific</div>
-                    <div class="exp-date">DATE - TERE - 2020-2021</div>
+                    <div class="exp-date">Aug 2023 - Dec 2023 | Cambridge, MA</div>
                     <div class="panel-description">
-                        Built data processing infrastructure for scientific research platforms. Worked with FastAPI, Celery, and PostgreSQL To handle large scales bioinformatics datesets.
+                        Instrumented SaaS platform with OpenTelemetry, routing distributed traces to Jaeger and Grafana. Built Node.js integration pipelines for Globus and cloud drives. Developed modular React frontend search interface. Containerized application environments using Docker.
                     </div>
                 </div>
             </div>
 
-            <!-- Cell 2,3: TikTok Data Lake -->
+            <!-- Cell 2,3: Tech Stacks -->
             <div class="panel">
                 <div class="panel-content">
-                    <div class="panel-label">PROJECT_01:</div>
-                    <div class="panel-title">TIKTOK_DATA_LAKE</div>
-                    <div class="panel-description" style="min-height: 60px;">
-                        <!-- Placeholder for schematic/diagram -->
-                    </div>
+                    <div class="panel-label">LANGUAGES</div>
                     <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Javascript</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Rust</span>
+                    </div>
+                    <div class="panel-label" style="margin-top: 1.5rem;">TECHNOLOGIES</div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Neo4j</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">React</span>
                         <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">ScyllaDB</span>
+                        <span class="tech-tag">Celery</span>
                         <span class="tech-tag">Redis</span>
-                        <span class="tech-tag">PostgreSQL</span>
                     </div>
                 </div>
             </div>
 
             <!-- ROW 3 -->
 
-            <!-- Cell 3,1: Mock Interviewer AI -->
+            <!-- Cell 3,1: Poker RL -->
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="panel-label">PROJECT_02</div>
+                    <div class="panel-title">POKER RL AGENT</div>
+                    <div class="panel-description">
+                        Engineered PyTorch PPO agent with Actor-Critic architecture outputting action probabilities and state values. Designed 30-feature state vector encoding cards, pot odds, position, and board texture. Built multi-process self-play training pipeline with experience replay. Benchmarked in PyPokerEngine against heuristic opponents.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">PPO</span>
+                        <span class="tech-tag">PyPokerEngine</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cell 3,2: AI Crowd Disaster Simulation -->
             <div class="panel">
                 <div class="panel-content">
                     <div class="panel-label">PROJECT_03</div>
-                    <div class="panel-title">MOCK INTERVIEWER AI</div>
-                    <div class="panel-description">
-                        Multimodal AI interviewer analyzing facial expressions, time, and speech patterns to provide real-time interview feedback and duncing.
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-tag">OpenAI</span>
-                        <span class="tech-tag">WebRTC</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">React</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cell 3,2: PyTorch PPO Agent -->
-            <div class="panel">
-                <div class="panel-content">
-                    <div class="panel-label">PROJECT_04</div>
-                    <div class="panel-title">PYTORCH PPO AGENT</div>
-                    <div class="panel-description">
-                        Reinforcement learning agent trained with Provimit Folcey Optimization to Play No-Limit Texas Hold'em at superhuman levels: +12.5 BB/tmg win rate.
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">Ray</span>
-                        <span class="tech-tag">PPO</span>
-                        <span class="tech-tag">CUDA</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cell 3,3: Crowd Disaster Sim -->
-            <div class="panel">
-                <div class="panel-content">
-                    <div class="panel-label">PROJECT_01</div>
                     <div class="panel-title">CROWD DISASTER SIM</div>
                     <div class="panel-description">
-                        Real-time crowd dynamics simulation for disaster scenario training. Uses Unity3D with PyTorch-powered agant behavior models.
+                        Developed real-time Unity3D and PyTorch simulation with emotionally aware agents responding to dynamic hazards. Engineered multi-head attention neural network to model complex social dynamics. Built end-to-end PPO deep learning pipeline with state tracking, reward computation, and policy optimization.
                     </div>
                     <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
                         <span class="tech-tag">Unity3D</span>
                         <span class="tech-tag">PyTorch</span>
                         <span class="tech-tag">C#</span>
-                        <span class="tech-tag">ML-Agents</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cell 3,3: TikTok Data Lake -->
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="panel-label">PROJECT_01</div>
+                    <div class="panel-title">TIKTOK DATA LAKE</div>
+                    <div class="panel-description">
+                        Architected Dockerized FastAPI/Celery/Redis backend for async video ingestion. Engineered multimodal ML pipeline with Faster-Whisper for audio and ONNX RapidOCR for text. Integrated OpenAI CLIP for vector embeddings and semantic similarity search. Built zero-shot classification with Hugging Face BART.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Celery</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Docker</span>
                     </div>
                 </div>
             </div>
