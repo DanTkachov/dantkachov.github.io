@@ -185,27 +185,9 @@
             text-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
         }
 
-        /* Status Indicator */
-        .status-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent-green);
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--accent-green);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            0%, 100% { opacity: .8; }
+            50% { opacity: 0.3; }
         }
 
         /* STRICT 3x3 GRID */
@@ -284,6 +266,36 @@
         }
         .project-disaster .project-number::before {
             content: "PROJECT_03";
+        }
+
+        /* GPU-Accelerated Terminal Pulse - TikTok Data Lake */
+        @keyframes gpu-pulse {
+            0% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 0.2;
+            }
+        }
+
+        .project-tiktok {
+            position: relative;
+        }
+
+        .project-tiktok .glow-layer {
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            box-shadow: 0 0 20px 5px rgba(74, 222, 128, 0.8), 0 0 40px 10px rgba(74, 222, 128, 0.4);
+            border-radius: inherit;
+            pointer-events: none;
+            animation: gpu-pulse 5s ease-in-out infinite;
+            z-index: -1;
         }
 
         /* Responsive adjustments */
@@ -467,6 +479,7 @@
 
             <!-- Cell 3,2: TikTok Data Lake (FIRST in HTML for mobile) -->
             <div class="panel project-tiktok">
+                <div class="glow-layer"></div>
                 <div class="panel-content">
                     <div class="panel-label"><span class="project-number"></span></div>
                     <div class="panel-title">TIKTOK DATA LAKE</div>
