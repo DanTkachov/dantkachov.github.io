@@ -275,6 +275,17 @@
             margin-bottom: 0.5rem;
         }
 
+        /* Dynamic Project Numbers - Mobile/Default (DOM order) */
+        .project-tiktok .project-number::before {
+            content: "PROJECT_01";
+        }
+        .project-poker .project-number::before {
+            content: "PROJECT_02";
+        }
+        .project-disaster .project-number::before {
+            content: "PROJECT_03";
+        }
+
         /* Responsive adjustments */
         @media (max-width: 1100px) {
             .grid-3x3 {
@@ -293,6 +304,30 @@
 
             .contact-vine {
                 display: none;
+            }
+        }
+
+        /* Desktop: Reorder project cards and override project numbers */
+        @media (min-width: 769px) {
+            .project-poker {
+                order: 1;
+            }
+            .project-tiktok {
+                order: 2;
+            }
+            .project-disaster {
+                order: 3;
+            }
+            
+            /* Override project numbers for desktop visual order */
+            .project-poker .project-number::before {
+                content: "PROJECT_01";
+            }
+            .project-tiktok .project-number::before {
+                content: "PROJECT_02";
+            }
+            .project-disaster .project-number::before {
+                content: "PROJECT_03";
             }
         }
 
@@ -428,29 +463,12 @@
                 </div>
             </div>
 
-            <!-- ROW 3 -->
+            <!-- ROW 3 - Mobile: TikTok first, Desktop: reordered via CSS -->
 
-            <!-- Cell 3,1: Poker RL -->
-            <div class="panel">
+            <!-- Cell 3,2: TikTok Data Lake (FIRST in HTML for mobile) -->
+            <div class="panel project-tiktok">
                 <div class="panel-content">
-                    <div class="panel-label">PROJECT_01</div>
-                    <div class="panel-title">POKER RL AGENT</div>
-                    <div class="panel-description">
-                        Engineered PyTorch PPO agent with Actor-Critic architecture outputting action probabilities and state values. Designed 30-feature state vector encoding cards, pot odds, position, and board texture. Built multi-process self-play training pipeline with experience replay. Benchmarked in PyPokerEngine against heuristic opponents.
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">PPO</span>
-                        <span class="tech-tag">PyPokerEngine</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cell 3,2: TikTok Data Lake -->
-            <div class="panel">
-                <div class="panel-content">
-                    <div class="panel-label">PROJECT_02</div>
+                    <div class="panel-label"><span class="project-number"></span></div>
                     <div class="panel-title">TIKTOK DATA LAKE</div>
                     <div class="panel-description">
                         Architected Dockerized FastAPI/Celery/Redis backend for async video ingestion. Engineered multimodal ML pipeline with Faster-Whisper for audio and ONNX RapidOCR for text. Integrated OpenAI CLIP for vector embeddings and semantic similarity search. Built zero-shot classification with Hugging Face BART.
@@ -465,10 +483,27 @@
                 </div>
             </div>
 
-            <!-- Cell 3,3: AI Crowd Disaster Simulation -->
-            <div class="panel">
+            <!-- Cell 3,1: Poker RL -->
+            <div class="panel project-poker">
                 <div class="panel-content">
-                    <div class="panel-label">PROJECT_03</div>
+                    <div class="panel-label"><span class="project-number"></span></div>
+                    <div class="panel-title">POKER RL AGENT</div>
+                    <div class="panel-description">
+                        Engineered PyTorch PPO agent with Actor-Critic architecture outputting action probabilities and state values. Designed 30-feature state vector encoding cards, pot odds, position, and board texture. Built multi-process self-play training pipeline with experience replay. Benchmarked in PyPokerEngine against heuristic opponents.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">PPO</span>
+                        <span class="tech-tag">PyPokerEngine</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cell 3,3: AI Crowd Disaster Simulation -->
+            <div class="panel project-disaster">
+                <div class="panel-content">
+                    <div class="panel-label"><span class="project-number"></span></div>
                     <div class="panel-title">CROWD DISASTER SIM</div>
                     <div class="panel-description">
                         Developed real-time Unity3D and PyTorch simulation with emotionally aware agents responding to dynamic hazards. Engineered multi-head attention neural network to model complex social dynamics. Built end-to-end PPO deep learning pipeline with state tracking, reward computation, and policy optimization.
